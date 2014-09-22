@@ -1,0 +1,47 @@
+/**
+ * All your custom CSS should go into this file
+ */
+
+body {
+   	padding-top: 15px;
+}
+
+.wps_logo {
+	padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.new_set_up {
+	font-size: 12px;
+}
+
+#child_anchor,
+#dev_anchor,
+#inst_anchor{
+	color: white;
+	text-decoration: none;
+
+}
+
+#plugin_list{
+
+	float: right;
+	padding-left: 20px;
+	padding-right: 20px;	
+	margin: auto;
+	line-height: 1.5;
+   	width: 350px;
+    height: 100px;
+    overflow: scroll;	
+}
+
+#no_sites_menu,
+#quick-start-sm-btn{
+	float: left;
+		padding-left: 20px;
+
+
+
+}
