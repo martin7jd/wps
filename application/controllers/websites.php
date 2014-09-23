@@ -4,12 +4,26 @@ class Websites extends CI_Controller {
 
    public function index(){
 
-   	   	$this->load->model('common_model');
- 		$data['list_sites'] = $this->common_model->list_sites();
- 	
-		$data['menu'] = 'templates/menubar';		
-		$data['main_content'] = 'websites/new_set_up';
-		$this->load->view('include/template', $data);
+   	   	$filename = './common/con_localhost.php';
+
+   	   	# Check to see if the above exists. If not redirect to setting it up
+		if(is_file($filename)){
+
+	  	   	$this->load->model('common_model');
+	 		$data['list_sites'] = $this->common_model->list_sites();
+	 	
+			$data['menu'] = 'templates/menubar';		
+			$data['main_content'] = 'websites/new_set_up';
+			$this->load->view('include/template', $data);
+	   	}	else {
+
+	   		redirect('admin');
+
+	   	}
+
+
+
+ 
 
 	}  
 
