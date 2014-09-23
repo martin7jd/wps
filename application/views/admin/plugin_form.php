@@ -35,7 +35,7 @@
 				              'style'       	=> 'width:50%',
 				              'data-toggle'		=> 'tooltip',
 				              'data-placement'	=> 'right',
-				              'title'			=> 'Right click on the Download Button for the plugin. From the drop down menu select "Copy Link Address" and paste it here',
+				              'title'			=> 'Right click on the Download Button for the plugin. From the drop down menu select &quot;Copy Link Address&quot; and paste it here',
 				              'value'			=> $plugin_path
 				            );
 

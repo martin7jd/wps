@@ -284,7 +284,10 @@ class Admin extends CI_Controller {
 			$data['controller_path'] = 'admin/add_plugin';	
    		}
 
-
+		$this->load->model('common_model');
+	 
+	 	$data['list_sites'] = $this->common_model->list_sites();
+	 	
 		$data['menu'] = 'templates/menubar';	
 		$data['main_content'] = 'admin/plugin_form';
 		$this->load->view('include/template', $data);
