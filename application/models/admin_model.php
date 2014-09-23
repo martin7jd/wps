@@ -15,38 +15,48 @@
 
 		# Get a list and detail of all the plugins in the wordpress_default_plugins db
 		public function get_plugins(){
+			
+			$this->load->dbutil(); 
 
-			# Get the credentials from the database to populate the database below.
-	    	$this->load->model('download_model');	
+			if($this->dbutil->database_exists('wpadmin_localhost')){
 
-			$query = $this
-						->download_model
-						->get_site_credentials();
+				# Get the credentials from the database to populate the database below.
+		    	$this->load->model('download_model');	
 
-			$host = $query[0]->admin_host;
-			$user = $query[0]->admin_user;
-			$pass = $query[0]->admin_password;				
+				$query = $this
+							->download_model
+							->get_site_credentials();
 
-			$config['hostname'] = "localhost";
-		    $config['username'] = $user;
-		    $config['password'] = $pass;
-		    $config['database'] = "wordpress_default_plugins";
-		    $config['dbdriver'] = "mysql";
-		    $config['dbprefix'] = "";
-		    $config['pconnect'] = FALSE;
-		    $config['db_debug'] = TRUE;
-		    $config['cache_on'] = FALSE;
-		    $config['cachedir'] = "";
-		    $config['char_set'] = "utf8";
-		    $config['dbcollat'] = "utf8_general_ci";
+				$host = $query[0]->admin_host;
+				$user = $query[0]->admin_user;
+				$pass = $query[0]->admin_password;				
 
-		   	$db2 = $this->load->database($config,TRUE);
+				$config['hostname'] = "localhost";
+			    $config['username'] = $user;
+			    $config['password'] = $pass;
+			    $config['database'] = "wordpress_default_plugins";
+			    $config['dbdriver'] = "mysql";
+			    $config['dbprefix'] = "";
+			    $config['pconnect'] = FALSE;
+			    $config['db_debug'] = TRUE;
+			    $config['cache_on'] = FALSE;
+			    $config['cachedir'] = "";
+			    $config['char_set'] = "utf8";
+			    $config['dbcollat'] = "utf8_general_ci";
 
-			$query = $db2->get('default_plugins');
+			   	$db2 = $this->load->database($config,TRUE);
 
-			$query = $query->result();	
+				$query = $db2->get('default_plugins');
 
-			return $query;   
+				$query = $query->result();	
+
+				return $query;   			
+
+			}	else {
+				redirect('admin');
+			}
+
+
 		}
 
 		public function add_plugin($plugin_name, $plugin_url, $checked){
