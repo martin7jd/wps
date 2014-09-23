@@ -57,7 +57,7 @@
                   echo '<div id="no_sites_menu">No sites available </div><div><a id="quick-start-sm-btn" href="./websites"><button type="button" class="btn btn-default btn-xs">New Set-up</button></a></div>';
               } else {
                   foreach ($list_sites as $value) {
-                    echo '<li><a href="websites">' . substr($value, 10) . '</a></li>';
+                    echo '<li><a href="' . base_url($value . '/wp-admin/index.php')  .'"  target="_blank">' . substr($value, 10) . '</a></li>';
                   }  
               }            
             ?>         
