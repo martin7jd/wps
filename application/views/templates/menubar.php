@@ -54,7 +54,9 @@
           <ul class="dropdown-menu" role="menu">
             <?php 
               if($list_sites[0] == 'no sites available'){
-                  echo '<div id="no_sites_menu">No sites available </div><div><a id="quick-start-sm-btn" href="./websites"><button type="button" class="btn btn-default btn-xs">New Set-up</button></a></div>';
+                  //echo '<div id="no_sites_menu">No sites available </div><div><a id="quick-start-sm-btn" href="./websites"><button type="button" class="btn btn-default btn-xs">New Set-up</button></a></div>';
+                  echo '<div id="no_sites_menu">No sites available </div><div><a id="quick-start-sm-btn" href="' . base_url('websites') . '"><button type="button" class="btn btn-default btn-xs">New Set-up</button></a></div>';
+
               } else {
                   foreach ($list_sites as $value) {
                     echo '<li><a href="' . base_url($value . '/wp-admin/index.php')  .'"  target="_blank">' . substr($value, 10) . '</a></li>';
