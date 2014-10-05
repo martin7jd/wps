@@ -97,8 +97,6 @@
 
 		public function active_plugins($sitename = ''){
 
-
-
 			# Get the credentials from the database to populate the database below.
 	    	$this->load->model('download_model');	
 
@@ -138,6 +136,7 @@
 
 			return $query;
 		}	
+
 	}/* End of Class */		
 
 

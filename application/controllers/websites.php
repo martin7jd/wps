@@ -616,9 +616,36 @@ class Websites extends CI_Controller {
 			}
 
 
-		# Recursivly copy the WordPress site to the site_backup directory
+		# Recursivly copy the WordPress site to the site_backups directory
 		$this->recurse_copy($src,$dst);
 
+		# Get the credentials from the database to populate the database below.
+    	$this->load->model('download_model');	
+
+		$query = $this
+					->download_model
+					->get_site_credentials();
+
+		$host = $query[0]->admin_host;
+		$user = $query[0]->admin_user;
+		$pass = $query[0]->admin_password;			
+
+		# Load database so I can check that the install has been completed
+		$config['hostname'] = $host;
+		$config['username'] = $user;
+		$config['password'] = $pass;
+		$config['database'] = $sitename;
+		$config['dbdriver'] = "mysql";
+		$config['dbprefix'] = "";
+		$config['pconnect'] = FALSE;
+		$config['db_debug'] = TRUE;
+		$config['cache_on'] = FALSE;
+		$config['cachedir'] = "";
+		$config['char_set'] = "utf8";
+		$config['dbcollat'] = "utf8_general_ci";
+
+		$this->db = $this->load->database($config, true);		
+		
 		#Load the dbutil model
 		$this->load->dbutil();
 
@@ -634,15 +661,14 @@ class Websites extends CI_Controller {
 
 		$backup =& $this->dbutil->backup($prefs);
 
-
-		write_file('./site_backups/' . $comp_sitename, $backup); 
+		write_file('./site_backups/' . $comp_sitename . '/' . $comp_sitename . '.' . $compress_type, $backup); 
 
 		$path = './site_backups/' . $comp_sitename . '/';
 
 		$this->zip->read_dir($path); 
-
-		// Download the file to your desktop. Name it "my_backup.zip"
-		//$this->zip->download($comp_sitename);
+		
+		# Download the file to your desktop. Name it "my_backup.zip"
+		$this->zip->download($comp_sitename);
 
 		# Send the file to your desktop
 		force_download($comp_sitename . '.' . $compress_type, $backup);	

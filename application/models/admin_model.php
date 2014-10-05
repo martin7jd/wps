@@ -6,7 +6,7 @@
 	      parent::__construct();
 	   }
 
-		# Drop the wpadmin_localhost  db
+		# Drop the wpadmin_localhost db
 		public function drop_wps_database(){
 
 			$this->load->dbforge();

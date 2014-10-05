@@ -15,8 +15,9 @@ It is intended that this application is used on localhost with mamp, wamp or xam
 7. Thats it.  
 
 
-## Todo
-Be able to compress the files and database so that they can be deployed to the production server.
+## Finished Developing a site
+Once you have finished developing the site you can click on the websites menu and select 'Local to Make Live'.
+This will download the MySql database for the site and the WordPress files as well. The database export is in the root of the WordPress project
 
 
-[sjlu projects](https://github.com/sjlu/)
+Project strated on [sjlu Codeigniter and Bootstrap project](https://github.com/sjlu/)

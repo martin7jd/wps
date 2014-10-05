@@ -42,9 +42,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="<?php echo base_url('admin');?>">Database Settings</a></li>
-            <li><a href="<?php echo base_url('admin/display_settings');?>">Display Settings</a></li>
+            <!--li><a href="<?php //echo base_url('admin/display_settings');?>">Display Settings</a></li-->
             <li class="divider"></li>
-            <li><a href="<?php echo base_url('admin/back_up_code');?>">Back-up Code</a></li>  
+            <!--li><a href="<?php //echo base_url('admin/back_up_code');?>">Back-up Code</a></li-->  
             <li class="divider"></li>
             <li><a href="<?php echo base_url('admin/plugin_defaults');?>">Default plug-in settings</a></li>  
           </ul>
@@ -54,7 +54,6 @@
           <ul class="dropdown-menu" role="menu">
             <?php 
               if($list_sites[0] == 'no sites available'){
-                  //echo '<div id="no_sites_menu">No sites available </div><div><a id="quick-start-sm-btn" href="./websites"><button type="button" class="btn btn-default btn-xs">New Set-up</button></a></div>';
                   echo '<div id="no_sites_menu">No sites available </div><div><a id="quick-start-sm-btn" href="' . base_url('websites') . '"><button type="button" class="btn btn-default btn-xs">New Set-up</button></a></div>';
 
               } else {
