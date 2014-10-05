@@ -20,11 +20,6 @@ class Websites extends CI_Controller {
 	   		redirect('admin');
 
 	   	}
-
-
-
- 
-
 	}  
 
 	public function develop(){
@@ -153,12 +148,15 @@ class Websites extends CI_Controller {
 
 	public function back_up(){
 
+		#
+
+
 	   	$this->load->model('common_model');
 	 
 	 	$data['list_sites'] = $this->common_model->list_sites();		
 
 		$data['menu'] = 'templates/menubar';		
-		$data['main_content'] = 'websites/back_up';
+		$data['main_content'] = 'websites/list_to_make_live';
 		$this->load->view('include/template', $data);		
 
 	}
@@ -596,6 +594,78 @@ class Websites extends CI_Controller {
 		     
 		redirect('websites/develop');
 	}
+
+	# Compress the database at the moment
+	public function compress_website(){
+
+		$sitename = $this->uri->segment(3);
+
+		$comp_sitename = substr($sitename, 10);
+
+		$compress_type = $this->uri->segment(4);
+
+		# Copy the source to the destination
+		$src = './' . $sitename;
+
+		$dst = './site_backups/' . $comp_sitename;
+
+			if(is_dir('./site_backups/' . $comp_sitename)){
+
+				$this->rrmdir($dst);
+
+			}
+
+
+		# Recursivly copy the WordPress site to the site_backup directory
+		$this->recurse_copy($src,$dst);
+
+		#Load the dbutil model
+		$this->load->dbutil();
+
+		$prefs = array(
+		                'tables'      => array(),  								# Array of tables to backup. if blank all tables exported
+		                'ignore'      => array(),           					# List of tables to omit from the backup
+		                'format'      => $compress_type,    					# gzip, zip, txt
+		                'filename'    => strtolower($comp_sitename),   			# File name - NEEDED ONLY WITH ZIP FILES
+		                'add_drop'    => TRUE,              					# Whether to add DROP TABLE statements to backup file
+		                'add_insert'  => TRUE,              					# Whether to add INSERT data to backup file
+		                'newline'     => "\n"               					# Newline character used in backup file
+		              );
+
+		$backup =& $this->dbutil->backup($prefs);
+
+
+		write_file('./site_backups/' . $comp_sitename, $backup); 
+
+		$path = './site_backups/' . $comp_sitename . '/';
+
+		$this->zip->read_dir($path); 
+
+		// Download the file to your desktop. Name it "my_backup.zip"
+		//$this->zip->download($comp_sitename);
+
+		# Send the file to your desktop
+		force_download($comp_sitename . '.' . $compress_type, $backup);	
+	}
+
+
+
+
+	public function recurse_copy($src,$dst) { 
+	    $dir = opendir($src); 
+	    @mkdir($dst); 
+	    while(false !== ( $file = readdir($dir)) ) { 
+	        if (( $file != '.' ) && ( $file != '..' )) { 
+	            if ( is_dir($src . '/' . $file) ) { 
+	                $this->recurse_copy($src . '/' . $file,$dst . '/' . $file); 
+	            } 
+	            else { 
+	                copy($src . '/' . $file,$dst . '/' . $file); 
+	            } 
+	        } 
+	    } 
+	    closedir($dir); 
+	} 
 
 }/* End of class */
 

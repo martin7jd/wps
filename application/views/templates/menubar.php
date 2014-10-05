@@ -33,7 +33,7 @@
             <li><a href="<?php echo base_url('websites');?>">New Set-up</a></li>
             <li><a href="<?php echo base_url('websites/develop');?>">Under Development</a></li>
             <li class="divider"></li>
-            <li><a href="<?php echo base_url('websites/back_up');?>">Back-up</a></li>
+            <li><a href="<?php echo base_url('websites/back_up');?>">Local To Make Live</a></li>
             <li class="divider"></li>
             <li><a href="<?php echo base_url('websites/display_site_list');?>">Remove</a></li>
           </ul>

@@ -1,30 +1,22 @@
 ## Introduction
 
-CodeIgniter Bootstrap kick starts the development process of the web development process by including Twitter Bootstrap into CodeIgniter. It also includes certain libraries such as AWS and Facebook in-case you are developing applications requiring those SDKs. So stop writing the same code over again and start working on your idea.
+WP Shepherd allows you to download, install and develop multiple versions of WordPress. You can also set-up the default plugins you want to install with every download. 
+WP Shepherd uses Codeigniter MVC and Twitter Bootstrap as it's foundation [sjlu](https://github.com/sjlu)
+It is intended that this application is used on localhost with mamp, wamp or xampp.
 
-CodeIgniter Bootstrap follows the path where it lazy loads libraries. Though the project footprint may be large, the memory footprint will still be extremely light. Try not to autoload libraries as it does not follow the CodeIgniter convention (though some libraries do make sense to autoload).
 
 ## Installation
+1. Download the master zip
+2. Unzip the master
+3. Rename the unzipped wps-master to wps
+4. Move or copy the new wps renamed folder to the root of you web directory. i.e. if you are using mamp have it under htdocs
+5. Launch your browser, and agian if your using mamp type in loacalhost:8888
+6. You will see wps. Click on it an launch WP Shepherd
+7. Thats it.  
 
-Derived from CodeIgniter, read [CodeIgniter Installation](http://codeigniter.com/user_guide/installation/index.html) for how to install using this [zipball](https://github.com/sjlu/CodeIgniter-Bootstrap/zipball/master) instead. If you're not familiar with CodeIgniter, I suggest reading the [CodeIgniter Tutorial](http://codeigniter.com/user_guide/tutorial/index.html) on how to get started and read the [wiki](https://github.com/sjlu/CodeIgniter-Bootstrap/wiki) for more information.
 
-## Flavors
+## Todo
+Be able to compress the files and database so that they can be deployed to the production server.
 
-* The `master` branch contains the original and includes [Twitter Bootstrap](http://twitter.github.io/bootstrap/) and [Font Awesome](http://fortawesome.github.io/Font-Awesome/).
-* The `cdn` branch contains the same libraries but is hosted by [BootstrapCDN](http://www.bootstrapcdn.com/).
 
-## Documentation
-
-Check out the [Wiki](https://github.com/sjlu/CodeIgniter-Bootstrap/wiki) for more information.
-
-## Releases
-
-This is currently a very active project, there are no projected release locks planned. All changes will be latest in master and may be unstable.
-
-## License
-
-MIT with [CodeIgniter Amendments](http://codeigniter.com/user_guide/license.html)
-
-## Other
-
-If you're looking for a LESS and/or JS compilier, try out another flavor like [CodeIgniter Sunrise](https://github.com/sjlu/CodeIgniter-Sunrise).
+[sjlu projects](https://github.com/sjlu/)
