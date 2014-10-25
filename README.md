@@ -1,7 +1,7 @@
 ## Introduction
 
 WP Shepherd allows you to download, install and develop multiple versions of WordPress. You can also set-up the default plugins you want to install with every download. 
-WP Shepherd uses Codeigniter MVC and Twitter Bootstrap as it's foundation. See [sjlu](https://github.com/sjlu)
+WP Shepherd uses Codeigniter MVC and Twitter Bootstrap as it's foundation. See [sjlu](https://github.com/sjlu).
 It is intended that this application is used on localhost with mamp, wamp or xampp.
 
 
