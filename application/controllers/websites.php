@@ -630,7 +630,7 @@ class Websites extends CI_Controller {
 		$user = $query[0]->admin_user;
 		$pass = $query[0]->admin_password;			
 
-		# Load database so I can check that the install has been completed
+		# Load database so I can export the db
 		$config['hostname'] = $host;
 		$config['username'] = $user;
 		$config['password'] = $pass;
@@ -673,9 +673,6 @@ class Websites extends CI_Controller {
 		# Send the file to your desktop
 		force_download($comp_sitename . '.' . $compress_type, $backup);	
 	}
-
-
-
 
 	public function recurse_copy($src,$dst) { 
 	    $dir = opendir($src); 

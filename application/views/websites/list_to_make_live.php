@@ -5,8 +5,6 @@
 	  		<th>Site Name</th><th></th><th>Compression Options</th><th><?php nbs(3);?></th>
 
 			<?php 
-
-
 				$i = 0;
 				foreach ($list_sites as $value) {
 					if($value == 'no sites available'){
